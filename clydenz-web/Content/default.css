@@ -28,22 +28,33 @@
 
 /* body */
 .sub-header{
-    padding:5px;
-    color:white;
-    display:inline-block;
+    font-weight:700;
 }
 .about{
-    background-color:yellow;
+    color:orange;
 }
 .contact{
-    background-color:orangered;
+    color:orangered;
 }
 .abstract-img{
     width:120px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:10px;
+    margin-top:15px;
     margin-bottom:10px;
+}
+.social-icons>i{
+    font-size:30px;
+}
+.social-icons{
+    color:#7A7A7A;
+}
+.social-icons, .social-icons:hover{
+    text-decoration:none;
+    margin:5px 5px 5px 0px;
+}
+.social-icons:active, .social-icons:visited{
+    text-decoration:none;
 }
 
 /* footer */
@@ -76,4 +87,7 @@
 .navbar-default{
     background-color:transparent;
     border-color:transparent;
+}
+.navbar-nav{
+    /*float:none;*/
 }
