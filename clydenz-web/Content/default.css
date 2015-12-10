@@ -1,4 +1,39 @@
-﻿/* header */
+﻿/* main */
+
+@font-face {
+    font-family: 'Daniel';
+    src: url('../fonts/danielbd-webfont.eot') format('embedded-opentype');
+    src: url('../fonts/danielbd-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/danielbd-webfont.woff2') format('woff2'),
+         url('../fonts/danielbd-webfont.woff') format('woff'),
+         url('../fonts/danielbd-webfont.ttf') format('truetype'),
+         url('../fonts/danielbd-webfont.svg#danielbd-webfont') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'WorkSans-Regular';
+    src: url('../fonts/WorkSans-Regular.otf') format('opentype');
+}
+h1,h2,h3{
+    font-family:Daniel;
+}
+p{
+    font-family:WorkSans-Regular;
+    font-size:16px;
+    letter-spacing:0.1rem;
+}
+@media screen and (min-width: 150px) {
+    h3{
+        font-size:18px;
+    }
+}
+@media screen and (min-width: 480px) {
+    h3{
+        font-size:24px;
+    }
+}
+/* header */
 .header-banner{
     background-color:dodgerblue;
     color:white;
@@ -6,12 +41,16 @@
     min-height:300px;
 }
 .content-container{
-    max-width:480px;
+    max-width:615px;
     padding-top:80px;
     padding-bottom:80px;
 }
 .content-container>div{
     display:inline-block;
+}
+.header-text{
+    font-size:55px;
+    margin:2px 1px 5px 5px;
 }
 @media (min-width: 420px) {
     .header-text {
@@ -36,12 +75,15 @@
 .contact{
     color:orangered;
 }
+.projects{
+    color:dodgerblue;
+}
 .abstract-img{
     width:120px;
     margin-left:auto;
     margin-right:auto;
-    margin-top:15px;
-    margin-bottom:10px;
+    margin-top:20px;
+    margin-bottom:20px;
 }
 .social-icons>i{
     font-size:30px;
@@ -106,7 +148,7 @@
 
 /* login form */
 .login-form{
-    width:280px;
+    width:255px;
     margin-left:auto;
     margin-right:auto;
     padding:20px 10px 20px 10px;
@@ -117,6 +159,7 @@
 }
 .login-form-title{
     padding:5px;
+    color:#387BD2;
 }
 .login-form-title>h2{
     margin-top:10px;

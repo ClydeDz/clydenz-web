@@ -99,12 +99,15 @@
     <Content Include="Content\font-awesome-min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\offcanvas.css" />
+    <Content Include="Dashboard\statistics.html" />
+    <Content Include="fonts\danielbd-webfont.svg" />
     <Content Include="images\clydedsouza.jpg" />
     <Content Include="images\cross-tiles.png" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="scripts\common.js" />
     <Content Include="scripts\offcanvas.js" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
@@ -112,6 +115,11 @@
     <Content Include="fonts\fontawesome-webfont-v=3.2.1.eot" />
     <Content Include="fonts\fontawesome-webfont-v=3.2.1.ttf" />
     <Content Include="fonts\fontawesome-webfont-v=3.2.1.woff" />
+    <Content Include="fonts\danielbd-webfont.eot" />
+    <Content Include="fonts\danielbd-webfont.ttf" />
+    <Content Include="fonts\danielbd-webfont.woff" />
+    <Content Include="fonts\WorkSans-Light.otf" />
+    <Content Include="fonts\WorkSans-Regular.otf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
