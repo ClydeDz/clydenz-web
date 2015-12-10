@@ -91,3 +91,38 @@
 .navbar-nav{
     /*float:none;*/
 }
+
+
+/* DASHBOARD */
+
+/* dashboard index menu */
+.menu-icons{
+    margin-right:5px;
+}
+.jumbotron{
+    color: #FFF;
+    background-color: #387BD2; 
+}
+
+/* login form */
+.login-form{
+    width:280px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:20px 10px 20px 10px;
+    border-radius:4px;
+    background-color:white;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+.login-form-title{
+    padding:5px;
+}
+.login-form-title>h2{
+    margin-top:10px;
+    text-align:center;
+}
+.login-form-error{
+    margin:5px 0px 5px 0px;
+    color:red;
+}
