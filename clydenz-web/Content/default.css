@@ -136,6 +136,9 @@ p{
 hr{
     border-color:#DADADA; 
 }
+.input-group-addon{
+    background-color:#FCFCFC;
+}
 
 /* DASHBOARD */
 
@@ -182,6 +185,14 @@ hr{
     max-width:400px;
     margin-left:auto;
     margin-right:auto;
+}
+#shortUrlValidity>.icon-remove-circle{
+    color:orangered;
+    cursor:pointer;
+}
+#shortUrlValidity>.icon-ok-circle{
+    color:forestgreen;
+    cursor:pointer;
 }
 
 /* 404 */

@@ -35,21 +35,19 @@ function storeUrlMappingData(UMD){
 }
 
 function whileTyping() {
-    if (checkShortUrlValidity(document.getElementById("inputShortUrl").value.toLowerCase()) == "taken") {
-        document.getElementById("status").innerHTML = "taken";
-    }
-    else {
-        document.getElementById("status").innerHTML = "available";
-    }
+    if (document.getElementById("inputShortUrl").value.toLowerCase().match("^[a-zA-Z0-9]*$"))
+        checkShortUrlValidity(document.getElementById("inputShortUrl").value.toLowerCase());
 }
 
 function checkShortUrlValidity(input) {
     //document.getElementById("status").innerHTML = document.getElementById("inputShortUrl").value;
     for (var i = 0; i < UrlMappingData.length; i++) {
-        if (input == UrlMappingData[i].ShortUrl) {
+        if (input == UrlMappingData[i].ShortUrl || input.length<3) {
+            document.getElementById("shortUrlValidity").innerHTML = "<i class='icon icon-remove-circle' title='Not available'></i>";
             return "taken";
         }
     }
+    document.getElementById("shortUrlValidity").innerHTML = "<i class='icon icon-ok-circle' title='Available'></i>";
     return "available";
 }
 
@@ -62,19 +60,32 @@ function checkShortUrlValidity(input) {
 function toggle(button) {
     if (button.value == "OFF") {
         button.value = "ON";
+        document.getElementById("inputShortUrl").value = "";
         document.getElementById("inputShortUrl").disabled = false;
         $(button).addClass("btn-primary");
     }
     else {
         button.value = "OFF";
+        document.getElementById("inputShortUrl").value = generateShortUrl();
         document.getElementById("inputShortUrl").disabled = true;
         $(button).removeClass("btn-primary");
     }
 }
 
 function generateShortUrl() {
-
+    var s = ""; var x = 6;
+    while (s.length < x && x > 0) {
+        var r = Math.random();
+        s += (r < 0.1 ? Math.floor(r * 100) : String.fromCharCode(Math.floor(r * 26) + (r > 0.5 ? 97 : 65)));
+    }
+    if (checkShortUrlValidity(s.toLowerCase()) == "taken") {
+        generateShortUrl();
+    }
+    return s.toLowerCase();
 }
+
+// validation code
+// create.html
 
 // modules to call api
 var UrlMappings = (function () {
