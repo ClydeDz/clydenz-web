@@ -106,13 +106,18 @@ function checkShortUrl() {
 }
 function submitNewUrl() {
     if (checkShortUrl() == true && checkLongUrl() == true) {
-        document.getElementById("formError").innerHTML = "<p class='alert alert-success login-form-success'>Success</p>";
-        setTimeout("location.href = '/Dashboard/urls';", 1500);
+        createNewUrlMapping(document.getElementById("inputShortUrl").value.toLowerCase(), document.getElementById("inputLongUrl").value.toLowerCase());
     }
     else
         document.getElementById("formError").innerHTML = "<p class='alert alert-danger login-form-error'>There are errors in the form. Check that you have entered a valid long url and a valid short url of length between 3 and 6 and contains only alphanumeric characters.</p>";
 }
-
+function success() {
+    document.getElementById("formError").innerHTML = "<p class='alert alert-success login-form-success'>Success</p>";
+    setTimeout("location.href = '/Dashboard/urls';", 1500);
+}
+function failure() {
+    document.getElementById("formError").innerHTML = "<p class='alert alert-danger login-form-error'>There are errors in the form. Check that you have entered a valid long url and a valid short url of length between 3 and 6 and contains only alphanumeric characters.</p>";
+}
 // modules to call api
 var UrlMappings = (function () {
     return {
@@ -129,35 +134,20 @@ var UrlMappings = (function () {
     }
 }());
 
-function putValues() {
-    var lurl = "https://github.com/ClydeDz";
-    var surl = "github";
+function createNewUrlMapping(short,long) {
     var dataG = {
-        ID:1,
-        ShortUrl: surl,
-        LongUrl: lurl
+        ShortUrl: short,
+        LongUrl: long
     };
-    // $ means that the function is being called from JQuery
-    // We pass the parameters for the api as an object
-    // The success function is called when the data is recieved
-    // The callback allows us to pass this data back out main js file.
     $.ajax({
-        type: "PUT",
-        url: "api/UrlMappings/1",
+        type: "POST",
+        url: "https://clydeapi.azurewebsites.net/api/UrlMapping",
         dataType: "json",
         data: dataG,                
-        //success: function (data) {
-        //    alert(data);
-        //    callback(data);
-        //}
     }).done(function (data, textStatus, jqXHR) {
-        console.log('success'+jqXHR.status);
+        success();
     }).fail(function (jqXHR, textStatus, errorThrown) {
-        console.log('fail: status=' + jqXHR.status + ', textStatus=' + textStatus);
+        failure();
     });
     //SpecialsModule.getSpecial(displayResponse);
-}
-function displayResponse(rData){
-    console.log(rData);
-    document.getElementById('status').innerHTML=""+rData;
 }
