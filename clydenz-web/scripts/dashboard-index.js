@@ -86,6 +86,32 @@ function generateShortUrl() {
 
 // validation code
 // create.html
+function checkLongUrl() {
+    var checkText = document.getElementById("inputLongUrl").value;
+    if (checkText != "" && /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/.test(checkText)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function checkShortUrl() {
+    var checkText = document.getElementById("inputShortUrl").value;
+    if (checkText != "" && /^[a-zA-Z0-9]*$/.test(checkText) && /^\w{3,6}$/.test(checkText)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+function submitNewUrl() {
+    if (checkShortUrl() == true && checkLongUrl() == true) {
+        document.getElementById("formError").innerHTML = "<p class='alert alert-success login-form-success'>Success</p>";
+        setTimeout("location.href = '/Dashboard/urls';", 1500);
+    }
+    else
+        document.getElementById("formError").innerHTML = "<p class='alert alert-danger login-form-error'>There are errors in the form. Check that you have entered a valid long url and a valid short url of length between 3 and 6 and contains only alphanumeric characters.</p>";
+}
 
 // modules to call api
 var UrlMappings = (function () {
@@ -102,3 +128,36 @@ var UrlMappings = (function () {
         }
     }
 }());
+
+function putValues() {
+    var lurl = "https://github.com/ClydeDz";
+    var surl = "github";
+    var dataG = {
+        ID:1,
+        ShortUrl: surl,
+        LongUrl: lurl
+    };
+    // $ means that the function is being called from JQuery
+    // We pass the parameters for the api as an object
+    // The success function is called when the data is recieved
+    // The callback allows us to pass this data back out main js file.
+    $.ajax({
+        type: "PUT",
+        url: "api/UrlMappings/1",
+        dataType: "json",
+        data: dataG,                
+        //success: function (data) {
+        //    alert(data);
+        //    callback(data);
+        //}
+    }).done(function (data, textStatus, jqXHR) {
+        console.log('success'+jqXHR.status);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log('fail: status=' + jqXHR.status + ', textStatus=' + textStatus);
+    });
+    //SpecialsModule.getSpecial(displayResponse);
+}
+function displayResponse(rData){
+    console.log(rData);
+    document.getElementById('status').innerHTML=""+rData;
+}

@@ -179,6 +179,9 @@ hr{
 .login-form-error{
     margin:10px 0px 10px 0px;
 }
+.login-form-success{
+    margin:10px 0px 10px 0px;
+}
 
 /* create */
 .create-form{
