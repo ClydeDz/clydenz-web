@@ -10,59 +10,28 @@
     <link href="../Content/default.css" rel="stylesheet" />
     <!---to-do add application insights--->
 </head>
-<body>
+<body onload="pageLoad('index')">
     <div class="container">
         <div class="row row-offcanvas row-offcanvas-right">
             <div class="col-xs-12 col-sm-9">
+                <p class='pull-right visible-xs'>
+                    <button type='button' class='btn btn-warning btn-xs offcanvas-button' data-toggle='offcanvas'>Menu</button>                 
+                </p>
                 <div id="dashboardHeader">
-                    <p class="pull-right visible-xs">
-                        <button type="button" class="btn btn-warning btn-xs" data-toggle="offcanvas">Menu</button>
-                    </p>
-                    <div class="jumbotron">
-                        <h1>Dashboard</h1>
-                        <p>Welcome Clyde, how are you doing?</p>
-                    </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <h2>Profile</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <h2>Profile</h2>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    </div>
-                </div><!--/row-->
-
+                <div id="urlContainer">
+                </div>
             </div><!--/.col-xs-12.col-sm-9-->
-
             <div id="dashboardSidebar">
-                <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active"><i class="icon icon-dashboard menu-icons"></i>Dashboard</a>
-                        <a href="#" class="list-group-item"><i class="icon icon-list menu-icons"></i>Url Listing</a>
-                        <a href="#" class="list-group-item"><i class="icon icon-plus-sign-alt menu-icons"></i>Create Short Url</a>
-                        <a href="#" class="list-group-item"><i class="icon icon-edit menu-icons"></i>Update Url</a>
-                        <a href="#" class="list-group-item"><i class="icon icon-bar-chart menu-icons"></i>Statistics</a>
-                        <a href="#" class="list-group-item"><i class="icon icon-user menu-icons"></i>Profile</a>
-                        <a href="#" class="list-group-item"><i class="icon icon-signout menu-icons"></i>Logout</a>
-                    </div>
-                </div><!--/.sidebar-offcanvas-->
             </div>
         </div><!--/row-->
-
-        <hr>
-
         <footer>
             <p>Clyde D'Souza | Dashboard</p>
         </footer>
-
-    </div><!--/.container-->
-
-
+    </div>
     <script src="../scripts/jquery-1.9.1.min.js"></script>
     <script src="../scripts/offcanvas.js"></script>
-    <script src="../scripts/jquery-1.9.1.intellisense.js"></script>
+    <script src="../scripts/dashboard-common.js"></script>
+    <script src="../scripts/dashboard-index.js"></script>
 </body>
 </html>

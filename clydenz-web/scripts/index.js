@@ -2,8 +2,9 @@
 function loadPage(param) {
     loadWebsiteHeader(param);
     loadWebsiteFooter();
-
-    checkForShortUrl();
+    if (param == "index") {
+        checkForShortUrl();
+    }    
 }
 // index only logic
 // check for short url string after /
