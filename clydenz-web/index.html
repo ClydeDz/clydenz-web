@@ -10,35 +10,10 @@
     
     <!---to-do add site favicon--->
     <!---to-do add application insights--->
+    <script type="text/javascript">  var appInsights=window.appInsights||function(config){    function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}var t={config:config},u=document,e=window,o="script",s=u.createElement(o),i,f;for(s.src=config.url||"//az416426.vo.msecnd.net/scripts/a/ai.0.js",u.getElementsByTagName(o)[0].parentNode.appendChild(s),t.cookie=u.cookie,t.queue=[],i=["Event","Exception","Metric","PageView","Trace"];i.length;)r("track"+i.pop());return r("setAuthenticatedUserContext"),r("clearAuthenticatedUserContext"),config.disableExceptionTracking||(i="onerror",r("_"+i),f=e[i],e[i]=function(config,r,u,e,o){var s=f&&f(config,r,u,e,o);return s!==!0&&t["_"+i](config,r,u,e,o),s}),t    }({        instrumentationKey:"39a150b8-4a3b-4d6c-8d30-ae27368ffc52"    });           window.appInsights=appInsights;    appInsights.trackPageView();</script>
 </head>
-<body>
-    <div class="container-fluid header-banner">
-        <div class="container text-center content-container">
-                <div><!--class="col-lg-2 col-md-12 col-sm-12 col-xs-12 text-center"-->
-                    <img src="images/clydedsouza.jpg" class="img-circle img-responsive" height="120" width="120"/>
-                </div>
-                <div> <!--class="col-lg-10 col-md-12 col-sm-12 col-xs-12 text-center"-->
-                    <h1 class="header-text">Clyde D'Souza</h1>
-                </div>
-        </div>
-    </div>
-    <div>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="icon icon-th-large"></i>
-                    </button>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">About me</a></li>
-                        <li><a href="/projects.html">Projects</a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid -->
-        </nav>
+<body onload="loadPage('index')">
+    <div id="websiteHeader">
     </div>
     <div class="container">
         <div class="row">
@@ -59,31 +34,14 @@
                 <img src="images/cross-tiles.png" class="img-responsive abstract-img" height="120" width="120" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h2 class="sub-header contact">Contact</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <p>Feel free to get in touch with me for a project, a query or just a chat over coffee.</p>
-                <h3>clydedsouza@outlook.com</h3>
-                <p>
-                    <a href="https://nz.linkedin.com/in/clydedz" class="social-icons"><i class="icon icon-linkedin-sign"></i></a>
-                    <a href="https://twitter.com/ClydeDz" class="social-icons"><i class="icon icon-twitter-sign"></i></a>
-                    <a href="https://github.com/ClydeDz" class="social-icons"><i class="icon icon-github-sign"></i></a>
-                </p>
-                <br /><p>Website crafted by Clyde D'Souza</p>
-            </div>
-        </div>
         <br />
     </div>
     <!--- footer --->
-    <div class="footer-block-container">
-        <div class="footer-block red"></div><div class="footer-block yellow"></div><div class="footer-block green"></div><div class="footer-block blue"></div>
-    </div>
+    <div id="websiteFooter"></div>
     <!--- scripts --->
     <script src="scripts/jquery-1.9.1.js"></script>
     <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/index.js"></script>
 </body>
 </html>
