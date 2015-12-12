@@ -61,13 +61,13 @@ function toggle(button) {
     if (button.value == "OFF") {
         button.value = "ON";
         document.getElementById("inputShortUrl").value = "";
-        document.getElementById("inputShortUrl").disabled = false;
+        document.getElementById("inputShortUrl").readOnly = false;
         $(button).addClass("btn-primary");
     }
     else {
         button.value = "OFF";
         document.getElementById("inputShortUrl").value = generateShortUrl();
-        document.getElementById("inputShortUrl").disabled = true;
+        document.getElementById("inputShortUrl").readOnly = true;
         $(button).removeClass("btn-primary");
     }
 }
@@ -105,7 +105,7 @@ function checkShortUrl() {
     }
 }
 function submitNewUrl() {
-    if (checkShortUrl() == true && checkLongUrl() == true) {
+    if (checkShortUrl() == true) {
         createNewUrlMapping(document.getElementById("inputShortUrl").value.toLowerCase(), document.getElementById("inputLongUrl").value.toLowerCase());
     }
     else
@@ -116,7 +116,7 @@ function success() {
     setTimeout("location.href = '/Dashboard/urls';", 1500);
 }
 function failure() {
-    document.getElementById("formError").innerHTML = "<p class='alert alert-danger login-form-error'>There are errors in the form. Check that you have entered a valid long url and a valid short url of length between 3 and 6 and contains only alphanumeric characters.</p>";
+    document.getElementById("formError").innerHTML = "<p class='alert alert-danger login-form-error'>There were errors while posting this new url.</p>";
 }
 // modules to call api
 var UrlMappings = (function () {
@@ -134,19 +134,27 @@ var UrlMappings = (function () {
     }
 }());
 
-function createNewUrlMapping(short,long) {
+var short; var long;
+function createNewUrlMapping(short, long) {
+    //alert(short + " " + long);
+    
     var dataG = {
         ShortUrl: short,
         LongUrl: long
     };
+    var sdataG = JSON.stringify(dataG);
+    
+    //alert(JSON.stringify(dataG));
     $.ajax({
-        type: "POST",
-        url: "https://clydeapi.azurewebsites.net/api/UrlMapping",
+        type: "PUT",
+        url: "http://clydeapi.azurewebsites.net/api/UrlMappings",
         dataType: "json",
-        data: dataG,                
+        data: sdataG,
     }).done(function (data, textStatus, jqXHR) {
+        console.log("f" + jqXHR + ": " + textStatus + " et " + errorThrown);
         success();
     }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.log("f" + jqXHR + ":" + textStatus + "et" + errorThrown);
         failure();
     });
     //SpecialsModule.getSpecial(displayResponse);
