@@ -139,19 +139,17 @@ function createNewUrlMapping(short, long) {
     //alert(short + " " + long);
     
     var dataG = {
+        ID:0,
         ShortUrl: short,
         LongUrl: long
     };
-    var sdataG = JSON.stringify(dataG);
-    
     //alert(JSON.stringify(dataG));
     $.ajax({
-        type: "PUT",
+        type: "POST",
         url: "http://clydeapi.azurewebsites.net/api/UrlMappings",
         dataType: "json",
-        data: sdataG,
+        data: dataG,
     }).done(function (data, textStatus, jqXHR) {
-        console.log("f" + jqXHR + ": " + textStatus + " et " + errorThrown);
         success();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         console.log("f" + jqXHR + ":" + textStatus + "et" + errorThrown);

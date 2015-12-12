@@ -109,6 +109,13 @@
     <Content Include="images\404.png" />
     <Content Include="images\clydedsouza.jpg" />
     <Content Include="images\cross-tiles.png" />
+    <Content Include="images\hdaakl-team.jpg" />
+    <Content Include="images\inspira-html.jpg" />
+    <Content Include="images\kiwi-sports.png" />
+    <Content Include="images\luckvenue-website.png" />
+    <Content Include="images\omg-team.jpg" />
+    <Content Include="images\sflp-website.png" />
+    <Content Include="images\tulips-collage.jpg" />
     <Content Include="lost.html" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config">

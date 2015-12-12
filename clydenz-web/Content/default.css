@@ -1,5 +1,8 @@
 ﻿/* main */
-
+::selection{
+    background-color:#FFA500;
+    color:white;
+}
 @font-face {
     font-family: 'Daniel';
     src: url('../fonts/danielbd-webfont.eot') format('embedded-opentype');
@@ -15,11 +18,12 @@
     font-family: 'WorkSans-Regular';
     src: url('../fonts/WorkSans-Regular.otf') format('opentype');
 }
+
 h1,h2,h3{
-    font-family:Daniel;
+    font-family:Daniel,serif;
 }
 p{
-    font-family:WorkSans-Regular;
+    font-family:WorkSans-Regular,Helvetica, sans-serif;
     font-size:16px;
     letter-spacing:0.1rem;
 }
@@ -35,7 +39,8 @@ p{
 }
 /* header */
 .header-banner{
-    background-color:dodgerblue;
+    background-color:#FFA500;
+    /*background-color:#5BA8FF;*/
     color:white;
     padding:0px;
     min-height:300px;
@@ -70,13 +75,13 @@ p{
     font-weight:700;
 }
 .about{
-    color:orange;
+    color:#FFA500;
 }
 .contact{
-    color:orangered;
+    color:#FF5F2B;
 }
 .projects{
-    color:dodgerblue;
+    color:#5BA8FF;
 }
 .abstract-img{
     width:120px;
@@ -110,19 +115,19 @@ p{
     margin:0px;
 }
 .red{
-    background-color:orangered;
+    background-color:#FF5F2B;
     width:25%;
 }
 .blue{
-    background-color:dodgerblue;
+    background-color:#5BA8FF;
     width:25%;
 }
 .yellow{
-    background-color:yellow;
+    background-color:#FFD800;
     width:25%;
 }
 .green{
-    background-color:forestgreen;
+    background-color:#3AB61B;
     width:25%;
 }
 /* over write defaults */
@@ -139,6 +144,15 @@ hr{
 .input-group-addon{
     background-color:#FCFCFC;
 }
+
+/* projects */
+.projects-row{
+    margin-top:25px;
+}
+.projects-row>div>h3{
+    color:#5BA8FF;
+}
+
 
 /* DASHBOARD */
 
