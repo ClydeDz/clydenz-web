@@ -1,4 +1,8 @@
-﻿var param;
+﻿// docs
+// pageLoad loads the appropriate function on the basis of which page called it
+// loads header and sidebar menu of the dashboard website
+// Based on which page has called this function, it loads the database values and calls the following function
+var param;
 function pageLoad(param) {
     loadDashboardHeader();
     loadDashboardSidebar(param);
@@ -8,27 +12,58 @@ function pageLoad(param) {
     else if(param=="create"){
         UrlMappings.getUrlData(storeUrlMappingData);
     }
+    else if (param == "profile") {
+        Users.getUsersData(displayProfileInformation);
+    }
 }
+/* *************************************************URL listing************************************************* */
 var data;
 var urlsText = "";
 function loadListOfUrls(data) {
     for (var i = 0; i < data.length; i++) {
         urlsText += "<div class='row'>";
-        urlsText += "<div class='col-lg-4 col-md-4 col-sm-12 col-xs-12'>";
+        urlsText += "<div class='col-lg-2 col-md-2 col-sm-12 col-xs-12'>";
         urlsText += "<p>" + data[i].ShortUrl + "</p></div>";
-        urlsText += "<div class='col-lg-4 col-md-4 col-sm-12 col-xs-12'>";
+        urlsText += "<div class='col-lg-8 col-md-8 col-sm-12 col-xs-12'>";
         urlsText += "<p>" + data[i].LongUrl + "</p></div>";
-        urlsText += "<div class='col-lg-4 col-md-4 col-sm-12 col-xs-12'>";
-        urlsText += "<p><button  onclick=\"test('"+data[i].ID+"');\" class='btn btn-danger' >Modify</button></p></div>";
+        urlsText += "<div class='col-lg-2 col-md-2 col-sm-12 col-xs-12'>";
+        urlsText += "<p><button  onclick=\"deleteRecord('" + data[i].ID + "');\" class='btn btn-danger' ><i class='icon icon-trash'></i></button></p></div>";
         urlsText += "</div><hr/>";
     }
     document.getElementById('urlContainer').innerHTML = urlsText;
 }
-function test(id) {
-    alert(id);
+function deleteRecord(id) {
+    swal({
+        title: "Are you sure?",
+        text: "You are about to delete a URL mapping permanently",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#D9534F",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+    },
+    function () {
+        if (deleteUrlMappingRecord(id)) {
+            swal({
+                title: "Great, we did it!",
+                text: "Your selected url has been deleted.",
+                type: "success",
+                showCancelButton: false,
+                confirmButtonColor: "#389E28",
+                confirmButtonText: "Sweet",
+                closeOnConfirm: true
+            },
+            function(){
+                setTimeout("location.href = '/Dashboard/urls';", 1000);
+            });          
+        }
+        else {
+            swal("Urgh", "We couldn't perform a simple delete. Our bad.", "error");
+        }
+     });
 }
 
-/* create */
+/* **********************************************************Create**************************************************** */
 var UrlMappingData;
 function storeUrlMappingData(UMD){
     UrlMappingData=UMD;
@@ -40,7 +75,6 @@ function whileTyping() {
 }
 
 function checkShortUrlValidity(input) {
-    //document.getElementById("status").innerHTML = document.getElementById("inputShortUrl").value;
     for (var i = 0; i < UrlMappingData.length; i++) {
         if (input == UrlMappingData[i].ShortUrl || input.length<3) {
             document.getElementById("shortUrlValidity").innerHTML = "<i class='icon icon-remove-circle' title='Not available'></i>";
@@ -72,6 +106,9 @@ function toggle(button) {
     }
 }
 
+// docs
+// generates a random 6 character short url
+// it also validates and returns only if its unique
 function generateShortUrl() {
     var s = ""; var x = 6;
     while (s.length < x && x > 0) {
@@ -84,8 +121,17 @@ function generateShortUrl() {
     return s.toLowerCase();
 }
 
-// validation code
-// create.html
+
+/* ************************************************************Profile********************************************** */
+var profileText="";
+function displayProfileInformation(profileData) {
+    for (var i = 0; i < profileData.length; i++) {
+        document.getElementById("inputEmail").value = ""+profileData[i].Email;
+    }
+}
+
+// ////////////////////////////////////////////////////////////validation code\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/* *************************************************************Create********************************************** */
 function checkLongUrl() {
     var checkText = document.getElementById("inputLongUrl").value;
     if (checkText != "" && /^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$/.test(checkText)) {
@@ -118,7 +164,9 @@ function success() {
 function failure() {
     document.getElementById("formError").innerHTML = "<p class='alert alert-danger login-form-error'>There were errors while posting this new url.</p>";
 }
-// modules to call api
+
+
+// ////////////////////////////////////////////////////////////////modules to call api\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 var UrlMappings = (function () {
     return {
         getUrlData: function (callback) {
@@ -134,16 +182,28 @@ var UrlMappings = (function () {
     }
 }());
 
+var Users = (function () {
+    return {
+        getUsersData: function (callback) {
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "https://clydeapi.azurewebsites.net/api/Users",
+                success: function (data) {
+                    callback(data);
+                }
+            });
+        }
+    }
+}());
+
 var short; var long;
-function createNewUrlMapping(short, long) {
-    //alert(short + " " + long);
-    
+function createNewUrlMapping(short, long) {    
     var dataG = {
         ID:0,
         ShortUrl: short,
         LongUrl: long
     };
-    //alert(JSON.stringify(dataG));
     $.ajax({
         type: "POST",
         url: "http://clydeapi.azurewebsites.net/api/UrlMappings",
@@ -155,5 +215,15 @@ function createNewUrlMapping(short, long) {
         console.log("f" + jqXHR + ":" + textStatus + "et" + errorThrown);
         failure();
     });
-    //SpecialsModule.getSpecial(displayResponse);
+}
+
+function deleteUrlMappingRecord(urlID) {
+    $.ajax({
+        type: "DELETE",
+        url: "http://clydeapi.azurewebsites.net/api/UrlMappings/"+urlID
+    }).done(function (data, textStatus, jqXHR) {
+        return true;
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        return false;
+    });
 }

@@ -99,12 +99,15 @@
     <Content Include="Content\font-awesome-min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\offcanvas.css" />
+    <Content Include="Content\sweetalert.css" />
     <Content Include="Dashboard\create.html" />
     <Content Include="Dashboard\logout.html" />
     <Content Include="Dashboard\profile.html" />
     <Content Include="Dashboard\statistics.html" />
     <Content Include="Dashboard\update.html" />
     <Content Include="Dashboard\urls.html" />
+    <Content Include="Dashboard\verify-email.html" />
+    <Content Include="Dashboard\verify-password.html" />
     <Content Include="fonts\danielbd-webfont.svg" />
     <Content Include="images\404.png" />
     <Content Include="images\clydedsouza.jpg" />
@@ -126,6 +129,7 @@
     <Content Include="scripts\dashboard-index.js" />
     <Content Include="scripts\index.js" />
     <Content Include="scripts\offcanvas.js" />
+    <Content Include="scripts\sweetalert.min.js" />
     <Content Include="Service References\Application Insights\ConnectedService.json" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="fonts\fontawesome-webfont-.eot" />

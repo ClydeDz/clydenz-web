@@ -12,7 +12,6 @@ dashboardSidebarText+="<div class='list-group'>";
 dashboardSidebarText+="<a href='/Dashboard/index' class='list-group-item active'><i class='icon icon-dashboard menu-icons'></i>Dashboard</a>";
 dashboardSidebarText += "<a href='/Dashboard/urls' class='list-group-item'><i class='icon icon-list menu-icons'></i>Url Listing</a>";
 dashboardSidebarText += "<a href='/Dashboard/create' class='list-group-item'><i class='icon icon-plus-sign-alt menu-icons'></i>Create Short Url</a>";
-dashboardSidebarText += "<a href='/Dashboard/update' class='list-group-item'><i class='icon icon-edit menu-icons'></i>Update Url</a>";
 dashboardSidebarText += "<a href='/Dashboard/statistics' class='list-group-item'><i class='icon icon-bar-chart menu-icons'></i>Statistics</a>";
 dashboardSidebarText += "<a href='/Dashboard/profile' class='list-group-item'><i class='icon icon-user menu-icons'></i>Profile</a>";
 dashboardSidebarText += "<a href='/Dashboard/logout' class='list-group-item'><i class='icon icon-signout menu-icons'></i>Logout</a>";

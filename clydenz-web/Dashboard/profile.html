@@ -19,7 +19,42 @@
                 </p>
                 <div id="dashboardHeader">
                 </div>
-                <div id="urlContainer">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Update Email 
+                </div>
+                <div class="panel-body">
+                    <form name="em" id="emailForm" role="form" data-toggle="validator">
+                        <div class="form-group">
+                            <label for="inputLongUrl" class="control-label">Email id&nbsp;<span class="label label-danger">Required</span></label>
+                            <input type="email" class="form-control" name="email" id="inputEmail" placeholder="" required data-error="">
+                            <div class="help-block with-errors"></div>
+                        </div>
+                        <button class="btn btn-primary" type="button" onclick="submitNewUrl()">Update Email</button><input type="reset" value="Clear" class="btn btn-default">
+                        <div id="formError"></div>
+                    </form>
+                </div>
+            </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        Update Password
+                    </div>
+                    <div class="panel-body">
+                        <form name="pwd" id="passwordForm" role="form" data-toggle="validator">
+                            <div class="form-group">
+                                <label for="inputLongUrl" class="control-label">Password&nbsp;<span class="label label-danger">Required</span></label>
+                                <input type="text" class="form-control" name="longurl" id="inputLongUrl" placeholder="******" required data-error="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputLongUrl" class="control-label">Confirm Password&nbsp;<span class="label label-danger">Required</span></label>
+                                <input type="text" class="form-control" name="longurl" id="inputLongUrl" placeholder="******" required data-error="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                            <button class="btn btn-danger" type="button" onclick="submitNewUrl()">Update Password</button><input type="reset" value="Clear" class="btn btn-default">
+                            <div id="formError"></div>
+                        </form>
+                    </div>
                 </div>
             </div><!--/.col-xs-12.col-sm-9-->
             <div id="dashboardSidebar">
